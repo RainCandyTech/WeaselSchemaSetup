@@ -1,6 +1,6 @@
 ﻿# 小狼毫配置方案整合包
 
-整合了[雾凇拼音](https://github.com/iDvel/rime-ice)和[空山五笔](https://github.com/mrshiqiqi/rime-wubi)方案，做到了配置方案的一键安装，为初入中州韵输入法的小白提供了便利。
+整合了[雾凇拼音](https://github.com/iDvel/rime-ice)和[空山五笔](https://github.com/mrshiqiqi/rime-wubi)方案，做到配置方案的一键安装，为初入中州韵输入法的小白提供便利。
 
 ## 软件特性
 
