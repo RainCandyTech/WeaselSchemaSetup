@@ -5,3 +5,4 @@ patch:
   schema/full_icon: ~
   schema/half_icon: ~
   emoji_switch/opencc_config: emoji.json
+  punctuator/import_preset: default
