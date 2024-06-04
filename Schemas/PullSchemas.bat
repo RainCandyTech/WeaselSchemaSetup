@@ -2,8 +2,21 @@
 
 rem 拉取方案仓库
 
-git clone https://github.com/iDvel/rime-ice.git "%~dp0rime-ice"
-git clone https://github.com/mrshiqiqi/rime-wubi.git "%~dp0rime-wubi"
+if exist "%~dp0rime-ice" (
+    pushd "%~dp0rime-ice"
+    git pull
+    popd
+) else (
+    git clone https://github.com/iDvel/rime-ice.git "%~dp0rime-ice"
+)
+
+if exist "%~dp0rime-wubi" (
+    pushd "%~dp0rime-wubi"
+    git pull
+    popd
+) else (
+    git clone https://github.com/mrshiqiqi/rime-wubi.git "%~dp0rime-wubi"
+)
 
 rem 拷贝通用配置文件
 
