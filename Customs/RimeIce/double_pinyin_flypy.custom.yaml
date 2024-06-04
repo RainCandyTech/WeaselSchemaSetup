@@ -1,0 +1,4 @@
+patch:
+  schema/name: "双拼"
+  translator/preedit_format: {} # 关闭全拼转换
+  switches/@3/reset: 0 # 默认关闭表情

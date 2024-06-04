@@ -1,0 +1,98 @@
+# Rime settings
+# encoding: utf-8
+# by: 空山明月
+# date: 2024-05-27
+
+schema:
+  schema_id: pinyin
+  name: "纯拼音"
+  version: "1.0"
+  icon: icons/CN.ico
+  ascii_icon: icons/EN.ico
+  full_icon: icons/full.ico
+  half_icon: icons/half.ico
+  author:
+    - 佚名
+  description: |
+    源自 Android 拼音
+  dependencies:
+    - wubi
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中, 英 ]
+
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+    - "lua_translator@time_date"
+  filters:
+    - simplifier
+    # - reverse_lookup_filter@ci_reverse_lookup # 注释本行去掉拼音模式下编码提示
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - derive/^([nl])ue$/$1ve/
+    - derive/^([jqxy])u/$1v/
+    - derive/un$/uen/
+    - derive/ui$/uei/
+    - derive/iu$/iou/
+    - derive/([aeiou])ng$/$1gn/
+    - derive/([dtngkhrzcs])o(u|ng)$/$1o/
+    - derive/ong$/on/
+    - derive/ao$/oa/
+    - derive/([iu])a(o|ng?)$/a$1$2/
+
+translator:
+  dictionary: pinyin
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    punct: '^/([0-9]0?|[A-Za-z]+)$'
+    reverse_lookup: "^z[a-z]*'?$"
+  
+ci_reverse_lookup:
+  dictionary: wubi.extended
+  enable_completion: true
+  tips: 〈拼音〉  
+
+style:
+  horizontal: true #竖排为false
+  inline_preedit: true
+
+  

@@ -1,0 +1,7 @@
+patch:
+  preset_color_schemes/aqua/hilited_label_color: 0xffffff
+  style/color_scheme: aqua
+  style/horizontal: false
+  style/layout/corner_radius: 0
+  style/layout/round_corner: 0
+  style/comment_font_face: "Microsoft YaHei, 黑体字根"

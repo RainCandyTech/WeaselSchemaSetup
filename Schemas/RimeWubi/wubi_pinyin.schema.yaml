@@ -1,0 +1,166 @@
+# Rime schema settings
+# encoding: utf-8
+# by: 空山明月
+# date: 2024-05-27
+
+schema:
+  schema_id: wubi_pinyin
+  name: "五笔拼音"
+  version: "2.1"
+  icon: icons/CN.ico
+  ascii_icon: icons/EN.ico
+  full_icon: icons/full.ico
+  half_icon: icons/half.ico
+  author:
+    - 发明人 王永民先生
+  description: |
+    五笔字型＋拼音混输
+    码表源自 ibus-table
+  dependencies:
+    - pinyin
+
+switches:
+  - name: show_es
+    reset: 0
+    states: [ 💀, 😄 ]
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: extended_charset
+    states: [ 常用, 增廣 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+    
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+    - "lua_translator@time_date"
+    - "lua_translator@calculator"
+    - "lua_translator@helper"
+  filters:
+    - simplifier@emoji_switch
+    - simplifier
+    - uniquifier
+    
+emoji_switch:
+  opencc_config: es.json
+  option_name: show_es
+  tips: none # all/none, "〈Emoji〉"
+  inherit_comment: false # 继承注释
+
+  
+speller:
+  delimiter: " ;'"
+  #max_code_length: 4  # 四碼頂字上屏
+  auto_select: false
+  auto_select_unique_candidate: false
+
+translator:
+  dictionary: wubi
+  prism: wubi_pinyin
+  enable_charset_filter: true
+  enable_sentence: true
+  enable_encoder: true
+  encode_commit_history: true
+  enable_user_dict: false
+  #max_phrase_length: 4
+  # preedit_format:
+  #   - 'xform/^([a-z]*)$/$1\t〈\U$1\E〉/'  # 注释掉本行将只显示键名提示而不显示英文编码提示
+  #   - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXY|工子又大月土王目水日口田山已火之金白木禾立女人幺言|"
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+abc_segmentor:
+  extra_tags:
+    - reverse_lookup
+
+reverse_lookup:
+  dictionary: pinyin
+  prefix: "`"
+  suffix: "'"
+  tips: 〈拼音〉
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+punctuator:
+  import_preset: default
+
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"
+
+key_binder:
+  import_preset: default #方案切换相关
+  bindings:
+    - {accept: bracketleft, send: Page_Up, when: has_menu} # [上翻页
+    - {accept: bracketright, send: Page_Down, when: has_menu} # ]下翻页
+  #  - {accept: semicolon, send: 2, when: has_menu} #分号次选
+    #- {accept: semicolon, send: semicolon, when: has_menu} #如要使用分号引导符号功能，并双击上屏分号，需注销此行
+    - {accept: period, send: 3, when: has_menu} #句号次选，已用下面内容替代
+    #- {accept:  dollar, send: 2, when: composing}
+    - {accept: Release+dollar, send: period, when: composing}
+    - {accept: Release+period, send: period, when: composing}
+    - {accept: comma, send: 2, when: has_menu} #逗号次选
+    - {accept: bar, send: 2, when: composing}
+    - {accept: Release+bar, send: comma, when: composing}
+    - {accept: Release+comma, send: comma, when: composing}
+
+    - {accept: "Tab", send: Escape, when: composing}
+    - {accept: "Caps_Lock", send: Escape, when: composing}
+    - {accept: "Shift_R", send: Escape, when: composing}
+    #将小键盘 6~9 .映射到主键盘，数字金额大写的 Lua 如 R1234.5678 可使用小键盘输入
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal, send: period, when: composing}
+    - {accept: KP_Add, send: plus, when: composing}
+    - {accept: KP_Subtract, send: minus, when: composing}
+    - {accept: KP_Multiply, send:  asterisk, when: composing}
+    - {accept: KP_Divide, send: slash, when: composing}
+
+recognizer:
+  import_preset: default
+  patterns:
+    expression: "^=.*$"
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    #uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    uppercase: "" #中文状态大写锁定直接上屏
+    reverse_lookup: "[a-z`]*`+[a-z`]*"
+    punct: ""
+
+menu:
+  page_size: 5 #候选项数
+  
+style:
+  horizontal: true #竖排为false
+  inline_preedit: true
+  

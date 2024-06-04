@@ -1,0 +1,19 @@
+# Rime settings
+# encoding: utf-8
+# by: 空山明月
+# date: 2024-05-27
+
+schema:
+  schema_id: wb_spelling
+  name: "作者：空山明月"
+  version: "1.0"
+  author:
+    - LuaTable by wubixiaozhu
+    - 拆分来自网上资料，原作者信息不详
+  description: |
+    伪方案，不能打字。
+    不要选我，不要修改本方案及配套词典。
+    仅用于辅助三重注解方案实现注解功能。
+
+translator:
+  dictionary: wb_spelling

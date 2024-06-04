@@ -1,0 +1,4 @@
+patch:
+  schema_list/+:
+    - schema: wubi
+    - schema: wubi_pinyin

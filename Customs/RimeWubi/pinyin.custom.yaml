@@ -1,0 +1,7 @@
+patch:
+  schema/name: "拼音"
+  schema/icon: ~
+  schema/ascii_icon: ~
+  schema/full_icon: ~
+  schema/half_icon: ~
+  emoji_switch/opencc_config: emoji.json

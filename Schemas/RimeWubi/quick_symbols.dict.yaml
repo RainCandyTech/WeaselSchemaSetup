@@ -1,0 +1,37 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# Credit: 何海峰 <flypy@qq.com>
+# modify: 空山明月、程心诚医
+# date: 2024-05-27
+---
+name: quick_symbols
+version: "1.0.1"
+sort: original
+use_preset_vocabulary: false
+...
+：	;q
+？	;w
+“	;e
+”	;r
+@	;t
+・	;y
+「	;u
+」	;i
+→	;o
+~	;p
+！	;a
+……	;s
+、	;d
+《	;g
+-	;h
+：「	;j
+〔	;k
+〕	;l
+（	;z
+*	;x
+）	;c
+——	;v
+》	;b
+//	;n
+>	;m
