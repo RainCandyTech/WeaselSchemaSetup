@@ -2,6 +2,7 @@ patch:
   key_binder/bindings/+:
     - { accept: KP_Enter, send: Return, when: composing } # 小键盘回车上屏
     - { accept: Control+period, toggle: ascii_punct, when: always } # Ctrl+.切换中英文标点
+    - { accept: Control+comma, toggle: full_shape, when: always } # Ctrl+,切换半全角
   switcher/hotkeys:
     - Shift+F1 # 方案选单快捷键
   schema_list: {}
