@@ -19,4 +19,15 @@
 
 ## 开源许可
 
-本项目采用GPLv3许可证，详见[LICENSE](LICENSE.md)文件。
+本项目采用GPLv3许可证，详见[许可文件](LICENSE.md)。
+
+[小狼毫输入法](https://github.com/rime/weasel)采用GPLv3许可证，详见[许可文件](LICENSE.md)。
+
+[雾凇拼音](https://github.com/iDvel/rime-ice)采用GPLv3许可证，详见[许可文件](LICENSE.md)。
+
+[空山五笔](https://github.com/mrshiqiqi/rime-wubi)采用木兰宽松许可证第2版，详见[许可文件](LICENSE-MULAN.md)。
+
+## 关于我们
+
+官方网站：[雨糖科技&lt;https://raincandy.tech&gt;](https://raincandy.tech)  
+GitHub：[雨糖科技&lt;https://github.com/RainCandyTech&gt;](https://github.com/RainCandyTech)

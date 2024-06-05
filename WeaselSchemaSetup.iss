@@ -22,12 +22,19 @@ WizardStyle=modern
 Uninstallable=no
 DisableDirPage=yes
 UsePreviousAppDir=no
+DisableWelcomePage=false
 AlwaysShowDirOnReadyPage=yes
-SetupIconFile=Icon.ico
+LicenseFile=Resources\License.rtf
+SetupIconFile=Resources\Icon.ico
+WizardImageFile=Resources\WizardImage.bmp
+WizardSmallImageFile=Resources\WizardSmallImage.bmp
 DefaultDirName={code:GetDefaultDirName}
 
 [Languages]
 Name: "chinese"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
+
+[Messages]
+chinese.ClickNext=点击“下一步”继续，或点击“取消”退出安装程序。%n%n%n%n雨糖科技 荣誉制作 | 大鸣大放 年轻绚烂
 
 [Types]
 Name: "full"; Description: "全部安装"
