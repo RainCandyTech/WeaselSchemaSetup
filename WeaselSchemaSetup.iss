@@ -18,7 +18,7 @@ OutputBaseFilename={#AppExeName}
 PrivilegesRequired=admin
 Compression=lzma2/max
 SolidCompression=yes
-WizardStyle=modern
+WizardStyle=classic
 Uninstallable=no
 DisableDirPage=yes
 UsePreviousAppDir=no
@@ -31,7 +31,7 @@ WizardSmallImageFile=Resources\WizardSmallImage.bmp
 DefaultDirName={code:GetDefaultDirName}
 
 [Languages]
-Name: "chinese"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
+Name: "chinese"; MessagesFile: "Resources\ChineseSimplified.isl"
 
 [Messages]
 chinese.ClickNext=点击“下一步”继续，或点击“取消”退出安装程序。%n%n%n%n雨糖科技 荣誉制作 | 大鸣大放 年轻绚烂
