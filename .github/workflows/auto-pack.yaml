@@ -1,0 +1,28 @@
+name: Auto Pack
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 6'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pull Schemas
+        shell: cmd
+        working-directory: Schemas
+        run: PullSchemas.bat
+
+      - name: Pack Installer
+        shell: cmd
+        run: ISCC WeaselSchemaSetup.iss
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: WeaselSchemaSetup
+          path: Output/WeaselSchemaSetup.exe
+          if-no-files-found: error

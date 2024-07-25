@@ -1,6 +1,6 @@
 ﻿#define AppId "{CFC336F3-B7AA-4064-9188-657B54B2B0EB}"
 #define AppName "小狼毫配置方案"
-#define AppExeName "小狼毫配置方案"
+#define AppExeName "WeaselSchemaSetup"
 #define AppVersion "2.0.0.0"
 #define AppPublisher "YukiIsait"
 #define AppCopyright "Copyright (C) 2024 YukiIsait"
